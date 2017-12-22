@@ -1,0 +1,41 @@
+*, *:hover {
+  @include transition(background-color .25s linear,
+          color .05s linear,
+          margin .25s linear,
+          opacity .25s linear,
+          filter .25s linear,
+          visibility .25s linear,
+          transform .25s linear);
+}
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(30px, 0);
+}
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-30px, 0);
+}
+
+.scale-enter-active, .scale-leave-active {
+  transition: transform .5s;
+}
+.scale-enter, .scale-leave-active {
+  transform: scale(0)
+}
+
+.option-enter-active, .option-leave-active {
+  transition: opacity .15s;
+}
+.option-enter, .option-leave-active {
+  opacity: 0;
+}

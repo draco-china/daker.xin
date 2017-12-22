@@ -1,0 +1,41 @@
+// Container
+$container-width: 75em;
+$header-height: 4.5em;
+$mobile-container-width: 100%;
+$body-bg: #eeeeee;
+$module-bg: rgba(255,255,255,0.6);
+$module-hover-bg: rgba(197,197,197,0.4);
+
+// Other
+$radius: 6px;
+
+// Colors
+$primary: #0088f5;
+$accent: #64ffda;
+$red: #f44336;
+$yellow: #ffeb3b;
+$grey: #efefef;
+$white: #fff;
+$black: #000;
+$black-light: #555;
+
+// Text
+$text: rgba(0, 0, 0, .87);
+$disabled: rgba(0, 0, 0, .54);
+$dividers: rgba(0, 0, 0, .13);
+
+// Links
+$link-color: $text;
+$link-hover-color: darken($link-color, 20%);
+
+// Font
+$sans-serif: -apple-system, CenturyGothic, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "微软雅黑", sans-serif;
+$serif: Georgia, Times, 'Times New Roman', serif;
+$monospace: Menlo, Monaco, Consolas, 'Courier New', monospace;
+$font-family-base: $sans-serif;
+
+// Typography
+$font-size-base: 14px;
+
+// Border
+$border: 1px solid $dividers;
