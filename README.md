@@ -1,6 +1,14 @@
-# nuxt-express
+# Daker.xin
 
-> Nuxt.js project
+> My blog by [Nuxt.js](https://github.com/nuxt)
+
+[Online Blog - http://daker.xin](http://daker.xin/)
+
+
+## Todos 更新记录
+
+- ~~增加百度自动push功能~~
+- 开始慢慢写blog
 
 ## Build Setup
 
@@ -18,7 +26,6 @@ $ npm start
 # lint test
 $ npm run lint
 ```
-## Todos 更新记录
 
 ## 目录结构
 ```
