@@ -1,8 +1,8 @@
 {
-  "name": "nuxt-exprss-template",
+  "name": "daker.xin",
   "version": "1.0.0",
   "description": "Nuxt.js project",
-  "author": "Gemini",
+  "author": "daker.zhou",
   "private": true,
   "scripts": {
     "dev": "backpack dev",
