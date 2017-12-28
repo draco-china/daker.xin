@@ -2,6 +2,7 @@ build/*.js
 .nuxt/*.js
 .nuxt/*.vue
 plugins/baidu-seo-push.js
+plugins/hm.baidu.js
 plugins/copy-right.js
 plugins/ga.js
 plugins/offline.js
