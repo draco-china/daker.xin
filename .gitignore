@@ -12,3 +12,7 @@ dist
 
 # Backpack build
 build
+
+# IDE/Editor data
+.idea
+.vscode
