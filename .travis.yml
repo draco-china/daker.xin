@@ -1,5 +1,5 @@
 language: node_js
-node_js: "-9.3.0"
+node_js: "-8.9.0"
 after_success: "-ssh root@140.143.99.190 -p yyy 'cd /www/daker.xin && git pull &&
   npm run build && pm2 start ecosystem.config.js && pm2 restart Daker.xin'"
 before_install:
