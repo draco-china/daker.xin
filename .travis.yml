@@ -2,7 +2,7 @@ language: node_js
 node_js: 
 - 9.3.0
 after_success: 
-- ssh root@140.143.99.190 'cd /home/daker.xin && git pull && npm install && npm run build && pm2 start ecosystem.config.js && pm2 restart Daker.xin'
+- ssh root@140.143.99.190 'cd /home/daker.xin && git pull && npm install && npm run build && pm2 delete all && pm2 start ecosystem.config.js'
 before_install:
 - openssl aes-256-cbc -K $encrypted_05852fa7c9c8_key -iv $encrypted_05852fa7c9c8_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d

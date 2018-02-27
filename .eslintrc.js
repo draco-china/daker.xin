@@ -735,7 +735,7 @@ module.exports = {
     "prefer-arrow-callback": 0,
 
     // 如果一个变量声明后不再被修改，那么应使用const来声明该变量
-    "prefer-const": 1,
+    "prefer-const": 0,
 
     // 推荐使用Reflect上的方法替代以前老方法
     "prefer-reflect": 2,

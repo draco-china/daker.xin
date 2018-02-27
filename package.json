@@ -14,9 +14,11 @@
   "dependencies": {
     "axios": "^0.16.2",
     "cookie-parser": "^1.4.3",
+    "cos-nodejs-sdk-v5": "^2.2.6",
     "cross-env": "^5.0.1",
     "express": "^4.15.3",
-    "nuxt": "^1.1.1",
+    "multer": "^1.3.0",
+    "nuxt": "^1.3.0",
     "offline-plugin": "^4.8.4",
     "qs": "^6.5.1",
     "source-map-support": "^0.4.15"
@@ -24,6 +26,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.6",
     "babel-eslint": "^7.2.3",
+    "babel-plugin-component": "^1.1.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "backpack-core": "^0.4.1",

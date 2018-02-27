@@ -16,3 +16,6 @@ build
 # IDE/Editor data
 .idea
 .vscode
+
+# Other
+.DS_Store

@@ -16,7 +16,7 @@ router.get('/users', function (req, res, next) {
 
 /* GET user by ID. */
 router.get('/users/:id', function (req, res, next) {
-  const id = parseInt(req.params.id)
+  const id = parseInt(req.params.id, 10)
   if (id >= 0 && id < users.length) {
     res.json(users[id])
   } else {
