@@ -2,7 +2,7 @@
 
 > My blog by [Nuxt.js](https://github.com/nuxt)
 
-[Online Blog - http://daker.xin](http://daker.xin/)
+[Online Blog - http://daker.xin](https://daker.xin/)
 
 
 ## Todos 更新记录
