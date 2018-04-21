@@ -15,7 +15,14 @@ module.exports = {
       })
     ],
     // 将重复引用的(第三方/自有)模块添加到vendor.bundle.js
-    vendor: ['axios'],
+    vendor: ['axios', 'particles.js', 'marked'],
+
+    styleResources: {
+      scss: [
+        './assets/scss/variables.scss',
+        './assets/scss/mixins.scss'
+      ]
+    },
     /*
     ** Run ESLINT on save
     */
@@ -34,12 +41,6 @@ module.exports = {
     max: 10,
     maxAge: 600000
   },
-  /*
-  ** Global CSS
-  */
-  css: [
-    { src: '~/assets/scss/app.scss', lang: 'scss' }
-  ],
   dev: (process.env.NODE_ENV !== 'production'),
   env: {
     baseUrl: `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}`
@@ -62,7 +63,7 @@ module.exports = {
       { name: 'HandheldFriendly', content: 'True' },
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
-      { hid: 'keywords', name: 'keywords', content: 'daker.xin ,前端技术开发,javascript技术' },
+      { hid: 'keywords', name: 'keywords', content: 'daker.xin,前端技术开发,javascript技术' },
       { hid: 'description', name: 'description', content: '凡心所向 素履所往 生如逆旅 一苇以航' }
     ],
     link: [
@@ -85,20 +86,24 @@ module.exports = {
   plugins: [
     // { src: '~/plugins/axios.js'},
     { src: '~/plugins/filters.js' },
+    { src: '~/plugins/marked.js' },
+    { src: '~/plugins/highlight.js' },
+    { src: '~/plugins/vue-loading.js' },
     { src: '~/plugins/ga.js', ssr: false },
     { src: '~/plugins/copy-right.js', ssr: false },
-    { src: '~/plugins/hm.baidu.js', ssr: false },
     { src: '~/plugins/baidu-seo-push.js', ssr: false },
-    { src: '~/plugins/offline.js', ssr: false }
+    { src: '~/plugins/offline.js', ssr: false },
+    { src: '~/plugins/particles.js', ssr: false },
+    { src: '~/plugins/image-popup.js', ssr: false },
   ],
   render: {
     http2: true,
     resourceHints: true
   },
   router: {
-    middleware: ['ssr-cookie'],
-    linkActiveClass: 'active-link', // 链接激活时使用的 CSS 类名
-    linkExactActiveClass: 'exact-active-link', // 当链接被精确匹配的时候应该激活的 class
+    middleware: ['change-page-col'],
+    linkActiveClass: '', // 链接激活时使用的 CSS 类名
+    linkExactActiveClass: 'link-active', // 当链接被精确匹配的时候应该激活的 class
     scrollBehavior(to, from, savedPosition) {
       // savedPosition is only available for popstate navigations.
       if (savedPosition) {
@@ -126,6 +131,13 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: {
-    color: '#3dd4ff'
-  }
+    color: '#0088f5'
+  },
+  /*
+  ** Global CSS
+  */
+  css: [
+    'highlight.js/styles/monokai.css',
+    { src: '~/assets/scss/app.scss', lang: 'scss' }
+  ]
 }

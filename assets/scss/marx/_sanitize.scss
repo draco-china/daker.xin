@@ -3,9 +3,24 @@
 /* Document (https://html.spec.whatwg.org/multipage/semantics.html#semantics)
    ========================================================================== */
 
+
+/*
+ * Opinionated defaults
+ */
+
+// specify the margin and padding of all elements
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 /**
  * 1. Remove repeating backgrounds in all browsers (opinionated).
  * 2. Add box sizing inheritence in all browsers (opinionated).
+ * 3. specify the border style and width of all elements
  */
 
 *,
@@ -13,6 +28,8 @@
 ::after {
   background-repeat: no-repeat; /* 1 */
   box-sizing: inherit; /* 2 */
+  border-style: solid;
+  border-width: 0;
 }
 
 /**
@@ -136,6 +153,7 @@ pre {
 a {
   background-color: transparent; /* 1 */
   -webkit-text-decoration-skip: objects; /* 2 */
+  text-decoration: none;
 }
 
 /**
@@ -335,6 +353,7 @@ input,
 select,
 textarea {
   color: inherit;
+  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
@@ -585,4 +604,13 @@ textarea,
 
 [aria-disabled] {
   cursor: default;
+}
+
+
+:root {
+  // background-color: if(variable-exists(root-background-color), $root-background-color, #ffffff);
+  box-sizing: if(variable-exists(root-box-sizing), $root-box-sizing, border-box);
+  color: if(variable-exists(root-color), $root-color, #000000);
+  cursor: if(variable-exists(root-cursor), $root-cursor, default);
+  font: if(variable-exists(root-font-size), $root-font-size, 100%)/#{if(variable-exists(root-line-height), $root-line-height, 1.5)} if(variable-exists(root-font-family), $root-font-family, sans-serif);
 }

@@ -1,82 +1,46 @@
 <template>
-  <section class="container">
-    <img src="~assets/img/logo.png" alt="Nuxt.js Logo" class="logo" />
-    <h1 class="title">
-      USERS
-    </h1>
-    <ul class="users">
-      <li v-for="(user, index) in users" :key="index" class="user">
-        <nuxt-link :to="{ name: 'id', params: { id: index }}">
-          {{ user.name }}
-        </nuxt-link>
-      </li>
-    </ul>
-  </section>
+  <div class="index">
+    <article-list :article="article" @loadmore="loadmoreArticle"></article-list>
+  </div>
 </template>
 
 <script>
-import axios from '~/plugins/axios'
-
-export default {
-  async asyncData () {
-    // eslint-disable-next-line
-    let { data } = await axios.get('/api/users')
-    return { users: data }
-  },
-  head () {
-    return {
-      title: 'Users'
+  /* eslint-disable */
+  import Service from '~/plugins/axios'
+  import ArticleList from '~/components/archive/list'
+  // import Carrousel from '~/components/archive/carrousel'
+  // import Announcement from '~/components/archive/announcement'
+  export default {
+    name: 'index',
+    fetch({ store }) {
+      return Promise.all([
+        store.dispatch('loadArticles'),
+        // store.dispatch('loadAnnouncements')
+      ])
+    },
+    components: {
+      // Carrousel,
+      // Announcement,
+      ArticleList
+    },
+    computed: {
+      article() {
+        return this.$store.state.article.list
+      },
+      // announcement() {
+      //   return this.$store.state.announcement
+      // },
+      nextPageParams() {
+        return {
+          currentPage: this.article.data.pagination.currentPage + 1,
+          pageSize: 1
+        }
+      }
+    },
+    methods: {
+      loadmoreArticle() {
+        this.$store.dispatch('loadArticles', this.nextPageParams)
+      }
     }
   }
-}
 </script>
-
-<style scoped>
-.container
-{
-    margin: 0;
-    width: 100%;
-    padding: 100px 0;
-    text-align: center;
-}
-
-.button, .button:visited
-{
-    display: inline-block;
-    color: black;
-    letter-spacing: 1px;
-    background-color: #fff;
-    border: 2px solid #000;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 15px 45px;
-}
-
-.button:hover, .button:focus
-{
-    color: #fff;
-    background-color: #000;
-}
-
-.title
-{
-    color: #000;
-    font-weight: 300;
-    font-size: 2.5em;
-    margin: 0;
-}
-.title
-{
-  margin: 30px 0;
-}
-.users
-{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.user
-{
-  margin: 10px 0;
-}
-</style>

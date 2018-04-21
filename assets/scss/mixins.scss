@@ -419,8 +419,17 @@
   @include css3-prefix('animation', $str);
 }
 
+
+
+@mixin clamp($lines: 2) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
 // clearfix 清除浮动
-@mixin clearfix {
+@mixin clearfix() {
   &:after {
     clear: both;
     content: '.';
@@ -430,4 +439,10 @@
     overflow: hidden;
   }
   *height: 1%;
+}
+
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

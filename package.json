@@ -17,9 +17,12 @@
     "cos-nodejs-sdk-v5": "^2.2.6",
     "cross-env": "^5.0.1",
     "express": "^4.15.3",
+    "highlight.js": "^9.12.0",
+    "marked": "^0.3.19",
     "multer": "^1.3.0",
     "nuxt": "^1.3.0",
     "offline-plugin": "^4.8.4",
+    "particles.js": "^2.0.0",
     "qs": "^6.5.1",
     "source-map-support": "^0.4.15"
   },

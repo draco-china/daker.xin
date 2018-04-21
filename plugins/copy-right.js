@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'production') {
     return [ '',
       '著作权归作者所有。',
       '商业转载请联系作者获得授权，非商业转载请注明出处。',
-      '作者：Daker Zhou',
+      '作者：Daker Zhou🍀',
       '链接：' + location.href,
       '来源：Daker.xin',
       ''
