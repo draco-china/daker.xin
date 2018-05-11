@@ -117,7 +117,7 @@ export const actions = {
   // 获取文章详情
   loadArticleDetail({ commit }, params = {}) {
     commit('article/REQUEST_DETAIL')
-    return service.get(`/article/${params.articleId}`).then(response => {
+    return service.get(`/article/${params.article_id}`).then(response => {
       const success = response.status && response.data && response.data.success
       if (success) {
         commit('article/GET_DETAIL_SUCCESS', response.data)

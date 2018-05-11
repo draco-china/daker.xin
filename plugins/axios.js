@@ -2,9 +2,11 @@ import Vue from 'vue'
 import axios from 'axios'
 const isProdMode = Object.is(process.env.NODE_ENV, 'production')
 
-const service = axios.create({
-  baseURL: isProdMode ? 'https://api.daker.xin/' : 'http://localhost:8080/'
-})
+const service = axios.create(
+  {
+    baseURL: isProdMode ? 'https://api.daker.xin/' : 'http://localhost:8080/'
+  }
+)
 
 // 拦截器
 service.interceptors.request.use(config => {

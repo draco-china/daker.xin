@@ -72,7 +72,7 @@
   export default {
     name: 'article-detail',
     validate({ params, store }) {
-      return params.articleId && !isNaN(Number(params.articleId))
+      return params.article_id && !isNaN(Number(params.article_id))
     },
     fetch({ store, params, error }) {
       return store.dispatch('loadArticleDetail', params).catch(err => {

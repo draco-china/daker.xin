@@ -9,15 +9,15 @@
   export default {
     name: 'tag-article-list',
     validate ({ params, store }) {
-      return Boolean(params.tagSlug) && store.state.tag.data.list.find(tag => {
-        return Object.is(tag.slug, params.tagSlug)
+      return Boolean(params.tag_slug) && store.state.tag.data.list.find(tag => {
+        return Object.is(tag.slug, params.tag_slug)
       })
     },
     fetch({ store, params }) {
       return store.dispatch('loadArticles', params)
     },
     head () {
-      const slug = this.defaultParams.tagSlug || ''
+      const slug = this.defaultParams.tag_slug || ''
       const title = slug.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())
       return {
         title: `${title} | Tag`
@@ -37,12 +37,12 @@
       },
       currentTag() {
         return this.$store.state.tag.data.list.find((tag, index, arr) => {
-          return Object.is(tag.slug, this.$route.params.tagSlug)
+          return Object.is(tag.slug, this.$route.params.tag_slug)
         })
       },
       defaultParams() {
         return {
-          tagSlug: this.$route.params.tagSlug
+          tag_slug: this.$route.params.tag_slug
         }
       },
       nextPageParams() {

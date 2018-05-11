@@ -12,15 +12,15 @@
       ArticleList
     },
     validate({ params, store }) {
-      return Boolean(params.categorySlug) && store.state.category.data.list.find(category => {
-        return Object.is(category.slug, params.categorySlug)
+      return Boolean(params.category_slug) && store.state.category.data.list.find(category => {
+        return Object.is(category.slug, params.category_slug)
       })
     },
     fetch({ store, params }) {
       return store.dispatch('loadArticles', params)
     },
     head() {
-      const slug = this.defaultParams.categorySlug || ''
+      const slug = this.defaultParams.category_slug || ''
       const title = slug.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())
       return {
         title: `${title} | Category`
@@ -37,12 +37,12 @@
       },
       currentCategory() {
         return this.$store.state.category.data.list.find(category => {
-          return Object.is(category.slug, this.$route.params.categorySlug)
+          return Object.is(category.slug, this.$route.params.category_slug)
         })
       },
       defaultParams() {
         return {
-          categorySlug: this.$route.params.categorySlug
+          category_slug: this.$route.params.category_slug
         }
       },
       nextPageParams() {

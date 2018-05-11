@@ -17,7 +17,7 @@
         <div class="item-meta">
           <span class="date">
             <i class="iconfont icon-clock"></i>
-            <span>{{ article.createAt | toYMD }}</span>
+            <span>{{ article.create_at | toYMD }}</span>
           </span>
           <span class="views">
             <i class="iconfont icon-eye"></i>

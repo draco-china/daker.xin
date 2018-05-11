@@ -50,7 +50,7 @@
       },
       currentTag() {
         return this.$store.state.tag.data.list.find(tag => {
-          return Object.is(tag.slug, this.$route.params.tagSlug)
+          return Object.is(tag.slug, this.$route.params.tag_slug)
         })
       },
       currentTagIconClass() {
@@ -61,7 +61,7 @@
       },
       currentCategory() {
         return this.$store.state.category.data.list.find(category => {
-          return Object.is(category.slug, this.$route.params.categorySlug)
+          return Object.is(category.slug, this.$route.params.category_slug)
         })
       },
       currentCategoryIconClass() {
