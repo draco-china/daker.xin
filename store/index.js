@@ -17,6 +17,9 @@ export const actions = {
     store.commit('option/SET_USER_AGENT', userAgent)
 
     const initAppData = [
+      // 配置数据
+      store.dispatch('loadAdminInfo'),
+      store.dispatch('loadGlobalOption'),
       // 内容数据
       store.dispatch('loadTagList'),
       store.dispatch('loadCategories')
@@ -26,6 +29,36 @@ export const actions = {
       initAppData.push(store.dispatch('loadHotArticles'))
     }
     return Promise.all(initAppData)
+  },
+
+  // 获取博主资料
+  loadAdminInfo({ commit }) {
+    commit('option/REQUEST_ADMIN_INFO')
+    return service.get('/user').then(response => {
+      const success = response.status && response.data && response.data.success
+      if (success) {
+        commit('option/REQUEST_ADMIN_INFO_SUCCESS', response.data)
+      } else {
+        commit('option/REQUEST_ADMIN_INFO_FAILURE')
+      }
+    }).catch(err => {
+      commit('option/REQUEST_ADMIN_INFO_FAILURE', err)
+    })
+  },
+
+  // 获取全局配置
+  loadGlobalOption({ commit }) {
+    commit('option/REQUEST_GLOBAL_OPTIONS')
+    return service.get('/site').then(response => {
+      const success = response.status && response.data && response.data.success
+      if (success) {
+        commit('option/REQUEST_GLOBAL_OPTIONS_SUCCESS', response.data)
+      } else {
+        commit('option/REQUEST_GLOBAL_OPTIONS_FAILURE')
+      }
+    }).catch(err => {
+      commit('option/REQUEST_GLOBAL_OPTIONS_FAILURE', err)
+    })
   },
 
   // 获取标签列表

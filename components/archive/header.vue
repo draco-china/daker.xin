@@ -57,7 +57,8 @@
         if (!this.currentTag) {
           return ''
         }
-        return this.currentTag.icon || 'icon-tag'
+        const currentTagIcon = this.currentTag.extends.find(t => Object.is(t.name, 'icon'))
+        return currentTagIcon ? currentTagIcon.value : 'icon-tag'
       },
       currentCategory() {
         return this.$store.state.category.data.list.find(category => {
@@ -68,14 +69,15 @@
         if (!this.currentCategory) {
           return ''
         }
-        return this.currentCategory.icon || 'icon-category'
+        const currentCategoryIcon = this.currentCategory.extends.find(t => Object.is(t.name, 'icon'))
+        return currentCategoryIcon ? currentCategoryIcon.value : 'icon-category'
       },
       currentDate() {
         return this.$route.params.date
       },
       currentKeyword() {
         return this.$route.params.keyword
-      },
+      }
     }
   }
 </script>

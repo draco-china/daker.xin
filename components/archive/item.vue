@@ -36,10 +36,13 @@
             <nuxt-link v-if="article.category" :to="`/category/${article.category.slug}`">{{ article.category.name }}</nuxt-link>
             <span v-else>未分类</span>
           </span>
-          <span class="tags" v-show="false">
+          <span class="tags">
             <i class="iconfont icon-tag"></i>
-            <span v-if="!article.tag.length">无</span>
-            <nuxt-link :key="index" :to="`/tag/${tag.slug}`" v-for="(tag, index) in article.tag">{{ tag.name }}</nuxt-link>
+            <span v-if="!article.tag.length">无标签</span>
+            <nuxt-link :key="index" :to="`/tag/${tag.slug}`" v-for="(tag, index) in article.tag">
+              {{ tag.name }}
+              <template v-if="!Object.is(index, article.tag.length - 1)">、</template>
+            </nuxt-link>
           </span>
         </div>
       </div>
@@ -105,7 +108,7 @@
       }
       > .item-body {
         float: right;
-        width: 28.5em;
+        width: 40em;
         height: 8.5em;
         > .item-title {
           font-size: 1em;
@@ -146,12 +149,11 @@
           white-space: nowrap;
           text-overflow: ellipsis;
           word-wrap: normal;
-          > .views {
-            min-width: 4rem;
-          }
+          > .views,
           > .likes,
-          > .comments {
-            min-width: 3em;
+          > .comments,
+          > .categories {
+            min-width: 4em;
           }
           > .date,
           > .views,
@@ -165,15 +167,12 @@
               margin-right: .4em;
             }
           }
-          > .tags,
-          > .categories {
-            a {
-              text-transform: capitalize;
-              margin-right: .5em;
-            }
-          }
           > .tags {
             margin-right: 0;
+            a {
+              text-transform: capitalize;
+              // margin-right: .5em;
+            }
           }
         }
       }

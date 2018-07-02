@@ -14,18 +14,15 @@
             </a>
           </div>
           <div class="left-line">
-            <strong>支持</strong>
-            <a target="_blank" rel="external nofollow" href="https://vuefe.cn/">
-              <i class="iconfont icon-vuejs"/>
-            </a>
-            <a target="_blank" rel="external nofollow" href="http://koajs.com/">
-              <i class="iconfont icon-nodejs"/>
+            <strong>备案</strong>
+            <a target="_blank" rel="external nofollow" href="http://www.miitbeian.gov.cn/">
+              <span class="content">{{globalOption.site_icp}}</span>
             </a>
           </div>
           <div class="left-line">
-            <strong>备案</strong>
-            <a target="_blank" rel="external nofollow" href="http://www.miitbeian.gov.cn/">
-              <span class="content">还没有备案</span>
+            <strong><img src="/gov.png" style="vertical-align: sub; width: 16px; height: 16px; display: inline-block"/> 粤公网安备</strong>
+            <a target="_blank" rel="external nofollow" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502002101">
+              <span class="content">44030502002101号</span>
             </a>
           </div>
         </div>
@@ -51,7 +48,12 @@
 
 <script>
   export default {
-    name: 'Footer'
+    name: 'Footer',
+    computed: {
+      globalOption() {
+        return this.$store.state.option.globalOption.data
+      }
+    },
   }
 </script>
 

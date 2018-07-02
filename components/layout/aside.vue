@@ -1,24 +1,5 @@
 <template>
   <aside class="aside">
-    <div class="aside-search">
-      <div class="search-box">
-        <input id="keyword"
-               required
-               list="keywords"
-               type="search"
-               name="search"
-               class="search-input"
-               placeholder="Search..."
-               v-model.trim="keyword"
-               @keyup.enter="toSearch">
-        <button class="search-btn" @click="toSearch">
-          <i class="iconfont icon-search"></i>
-        </button>
-        <nuxt-link to="/sitemap" class="sitemap-btn">
-          <i class="iconfont icon-sitemap"></i>
-        </nuxt-link>
-      </div>
-    </div>
     <div class="aside-article">
       <p class="title">
         <i class="iconfont icon-list"></i>
@@ -47,7 +28,9 @@
                      :to="`/tag/${item.slug}`"
                      v-for="(item, index) in tag.data.list">
             <a class="title" :title="item.description">
-              <i class="iconfont" :class="item.icon"></i>
+              <i class="iconfont"
+                 :class="[item.extends.find(t => Object.is(t.name, 'icon')).value]"
+                 v-if="item.extends.find(t => Object.is(t.name, 'icon'))"></i>
               <span>&nbsp;</span>
               <span>{{ item.name }}</span>
               <span>({{ item.articleTotal || 0 }})</span>
@@ -78,7 +61,6 @@
     name: 'layout-aside',
     data() {
       return {
-        keyword: '',
         fixedMode: {
           fixed: false,
           element: null,
@@ -88,11 +70,6 @@
     },
     components: {
       Calendar
-    },
-    mounted() {
-      if (Object.is(this.$route.name, 'search-keyword')) {
-        this.keyword = this.$route.params.keyword
-      }
     },
     computed: {
       tag() {
@@ -106,14 +83,6 @@
       }
     },
     methods: {
-      toSearch() {
-        const keyword = this.keyword
-        const paramsKeyword = this.$route.params.keyword
-        const isSearchPage = Object.is(this.$route.name, 'search-keyword')
-        if (keyword && (isSearchPage ? !Object.is(paramsKeyword, keyword) : true)) {
-          this.$router.push({ name: 'search-keyword', params: { keyword }})
-        }
-      },
       setFullColumu() {
         // this.$store.commit('option/SET_ERROR_COLUMU', true)
       },

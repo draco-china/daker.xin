@@ -8,11 +8,6 @@
       <header-view v-if="!isMobile"></header-view>
       <mobile-header v-if="isMobile"></mobile-header>
       <main id="main" :class="{ 'mobile-layout': isMobile, [$route.name]: true }">
-        <transition name="module">
-          <keep-alive>
-            <nav-view v-if="!isMobile"></nav-view>
-          </keep-alive>
-        </transition>
         <div id="main-content" class="main-content" :class="{'full-column': fullColumn, 'mobile-layout': isMobile, [$route.name]: true}">
           <keep-alive>
             <nuxt></nuxt>
@@ -31,7 +26,7 @@
 
 <script>
   import { MobileHeader, MobileAside } from '~/components/mobile'
-  import { Background, Header, Footer, Aside, Nav } from '~/components/layout'
+  import { Background, Header, Footer, Aside } from '~/components/layout'
 
   export default {
     name: 'app',
@@ -47,7 +42,6 @@
       HeaderView: Header,
       FooterView: Footer,
       AsideView: Aside,
-      NavView: Nav,
       MobileHeader,
       MobileAside
     },
@@ -111,18 +105,11 @@
     }
     .main-content {
       float: left;
-      width: 42.5em;
-      margin: 0 0 0 1em;
+      width: 55em;
       position: relative;
       overflow: hidden;
       @include css3-prefix(transition, width .35s);
       @include clearfix();
-      &.mobile-layout {
-        width: 100%;
-        margin: 0;
-        padding: 1rem;
-        padding-top: $navbar-height + 1;
-      }
       &:-moz-full-screen {
         overflow-y: auto;
       }
@@ -136,7 +123,7 @@
       }
 
       &.full-column {
-        width: 62.5em;
+        width: 75em;
         @include css3-prefix(transition, width .35s);
       }
       &.mobile-layout {
